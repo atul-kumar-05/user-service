@@ -1,6 +1,7 @@
 package com.example.userservice.model;
 
 import com.example.userservice.UserStatus;
+import com.example.userservice.util.UserType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -17,6 +18,7 @@ public class User extends BaseEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "user_id", unique = true, nullable = false)
         private UUID userId;
 
         @Column(unique = true)
@@ -27,4 +29,13 @@ public class User extends BaseEntity {
 
         @Column(name = "status")
         private UserStatus status;
+
+        @Column(name = "user_type")
+        private UserType userType;
+
+        @OneToOne(mappedBy = "user_profile", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        private UserProfile userProfile;
+
+        @OneToOne(mappedBy = "address", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        private Address address;
 }
