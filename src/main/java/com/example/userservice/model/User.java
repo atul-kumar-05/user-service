@@ -33,6 +33,12 @@ public class User extends BaseEntity {
         @Column(name = "user_type")
         private UserType userType;
 
+        @Column(name = "email_verified")
+        private Boolean emailVerified;
+
+        @Column(name = "phone_verified")
+        private Boolean phoneVerified;
+
         @OneToOne(mappedBy = "user_profile", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
         private UserProfile userProfile;
 

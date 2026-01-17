@@ -13,7 +13,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BaseEntity {
-    private Boolean active;
+    private Boolean deleted;
     private Instant createdAt;
     private Instant updatedAt;
 }

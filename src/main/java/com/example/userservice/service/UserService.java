@@ -1,15 +1,18 @@
 package com.example.userservice.service;
 
-import com.example.userservice.model.User;
+import com.example.userservice.dto.CreateUserRequest;
+import com.example.userservice.dto.UpdateUserReqDto;
+import com.example.userservice.dto.UserResponse;
 import org.springframework.stereotype.Service;
+import java.util.UUID;
 
 @Service
 public interface UserService {
 
-    public User createUser(User user);
+    public UserResponse createUser(CreateUserRequest user);
 
-    public User getUser(long id);
+    public UserResponse getUser(UUID id);
 
-    public User blockUser(long id);
+    public void blockUser(UUID id);
 
 }

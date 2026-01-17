@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class CreateUserReqDto {
+public class CreateUserRequest {
 
     @NotBlank(message = "First name is required")
     private String firstName;
@@ -15,7 +15,7 @@ public class CreateUserReqDto {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @Email
+    @Email(message = "Invalid email format")
     private String email;
 
     @NotBlank(message = "Phone number is required")

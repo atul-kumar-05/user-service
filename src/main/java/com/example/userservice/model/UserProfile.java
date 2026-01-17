@@ -21,7 +21,7 @@ public class UserProfile extends BaseEntity {
     private UUID userProfileId;
 
     @Column(name = "user_id", unique = true, nullable = false)
-    private UUID uerId;
+    private UUID userId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

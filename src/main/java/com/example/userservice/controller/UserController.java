@@ -1,10 +1,9 @@
 package com.example.userservice.controller;
 
-import com.example.userservice.dto.BlockUserReqDto;
-import com.example.userservice.dto.CreateUserReqDto;
-import com.example.userservice.dto.UserResDto;
-import com.example.userservice.model.User;
+import com.example.userservice.dto.CreateUserRequest;
+import com.example.userservice.dto.UserResponse;
 import com.example.userservice.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,18 +20,18 @@ public class UserController {
 
     private  final UserService userService;
 
-    public ResponseEntity<UserResDto> createUser(@RequestBody @Valid CreateUserReqDto createUserReqDto) {
-        UserResDto user = userService.createUser(createUserReqDto);
+    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid CreateUserRequest createUserReqDto) {
+        UserResponse user = userService.createUser(createUserReqDto);
         return ResponseEntity.ok(user);
     }
 
-    public ResponseEntity<UserResDto> getUserByPhone(@PathVariable UUID userId) {
-        UserResDto user = userService.getUser(userId);
+    public ResponseEntity<UserResponse> getUserByPhone(@PathVariable UUID userId) {
+        UserResponse user = userService.getUser(userId);
         return ResponseEntity.ok(null);
     }
 
-    public ResponseEntity<?> blockUser(@RequestBody BlockUserReqDto blockUserReqDto) {
-        userService.blockUser(blockUserReqDto);
+    public ResponseEntity<?> blockUser(@PathVariable UUID userId) {
+        userService.blockUser(userId);
         return ResponseEntity.noContent().build();
     }
 }
